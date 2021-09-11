@@ -1,47 +1,31 @@
 <?php
-
 namespace view;
-
 use controller\ParametersHandling;
-
 /**
- * Implémentation d'une classe vue pour ce projet
- * Toutes les vues en héritent
  * @author apineau
  * @version 2021
  */
 abstract class GenericView {
-
-    /** @var string titre de la vue (dans debut.inc.php) */
     private $title;
 
-    /** @var string chemin d'accès vers le fichier d'inclusion pour l'entête  */
-    private $header;
+    private $head;
 
-    /** @var string chemin d'accès vers le fichier d'inclusion pour la partie centrale */
     private $middle;
 
-    /** @var string chemin d'accès vers le fichier d'inclusion pour le pied de page */
     private $footer;
 
-    /** @var bool statut des liens des onglets ; =true => actif ; =false => inactif (dans debut.inc.php) */
     private $isLinksActive;
 
-    /** @var bool un utilisateur est-il authentifié sur cette session */
     private $isConnected;
     
-    /** @var string identité de l'utilisateur connecté (à afficher à coté du bouton) */
     private $identiy;
     
     public function __construct() {
         $this->setTitle('Touristic');
-        $this->setHeader(ParametersHandling::root() . 'view/includes/debut.inc.php');
-        $this->setFooter(ParametersHandling::root() . 'view/includes/fin.inc.php');
+        $this->setHead(ParametersHandling::root() . 'view/includes/head.inc.php');
+        $this->setFooter(ParametersHandling::root() . 'view/includes/footer.inc.php');
     }
 
-    /**
-     *  Afficher la vue signifie l'inclure au flux de sortie HTML
-     */
     public abstract function display();
 
     // ACCESSEURS ET MUTATEURS
@@ -49,7 +33,7 @@ abstract class GenericView {
         return $this->title;
     }
 
-    function getHeader(): string {
+    function getHead(): string {
         return $this->header;
     }
 
@@ -77,7 +61,7 @@ abstract class GenericView {
         $this->title = $title;
     }
 
-    function setHeader(string $header) {
+    function setHead(string $header) {
         $this->header = $header;
     }
 

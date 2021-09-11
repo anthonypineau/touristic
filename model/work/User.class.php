@@ -1,9 +1,7 @@
 <?php
-namespace modele\metier;
+namespace model\work;
 
 /**
- * Description of User
- *
  * @author apineau
  * @version 2021
  */

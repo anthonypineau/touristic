@@ -1,45 +1,28 @@
 <?php
 /**
- * Description of Bdd
- * Singleton de connexion à la base de données
- * Remarque : les noms de colonnes de la BDD seront automatiquement convertis en majuscules
- * (option PDO : $pdo_options[PDO::ATTR_CASE] = PDO::CASE_UPPER
  * @author apineau
- * @version 2019
+ * @version 2021
  */
-
-namespace modele\dao;
+namespace model\dao;
 
 use \PDO;
 use \PDOException;
-use controleur\GestionParametres;
+use controller\ParametersHandling;
 
 class Bdd {
-
-    /**
-     * @var PDO Objet de type PDO, dépositaire de la connexion courante à la BDD
-     */
     private static $pdo = null;
 
-    /**
-     * Crée un objet de type PDO et ouvre la connexion 
-     * @return \PDO un objet de type PDO pour accéder à la base de données
-     */
-    public static function connecter()  {
-        // on ne crée une connexion que si elle n'existe pas déjà ...
+    public static function connect()  {
         if (is_null(self::$pdo)) {
             try {
-                // Paramètres de connexion : lire le fichier de configuration en variable de session
-                GestionParametres::initialiser();
-                // Attributs de connexion
+                ParametersHandling::initialize();
                 $pdo_options = array();
-                $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;       // permet la gestion des exceptions
-                $pdo_options[PDO::MYSQL_ATTR_INIT_COMMAND] = "SET NAMES utf8";  // pour récupérer les données en UTF8
-                $pdo_options[PDO::ATTR_CASE] = PDO::CASE_UPPER;                 // pour compatibilité avec Oracle database (noms de champs trancrits en majuscules)
-                // instanciation d'un objet de connexion PDO
+                $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
+                $pdo_options[PDO::MYSQL_ATTR_INIT_COMMAND] = "SET NAMES utf8";
+                $pdo_options[PDO::ATTR_CASE] = PDO::CASE_UPPER;
                 self::$pdo = new PDO(
-                    GestionParametres::get("dsn").GestionParametres::get("bdd"),
-                    GestionParametres::get("login"), GestionParametres::get("mdp"),
+                    ParametersHandling::get("dsn").ParametersHandling::get("bdd"),
+                    ParametersHandling::get("login"), ParametersHandling::get("mdp"),
                     $pdo_options
                 );
                 
@@ -51,7 +34,7 @@ class Bdd {
         return self::$pdo;
     }
 
-    public static function deconnecter() {
+    public static function disconnect() {
         self::$pdo = null;
     }
 

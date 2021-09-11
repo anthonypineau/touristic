@@ -1,12 +1,10 @@
 <?php
-namespace modele\dao;
+namespace model\dao;
 
-use modele\metier\User;
+use model\work\User;
 use PDO;
 
 /**
- * Description of UserDAO
- * Classe métier  :  User
  * @author apineau
  * @version 2021
  */

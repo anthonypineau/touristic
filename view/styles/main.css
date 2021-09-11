@@ -1,0 +1,208 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Heebo , "Source Sans Pro", sans-serif;
+}
+
+body {
+    text-transform: none;
+}
+
+.header{
+    width: 100%;
+    text-align: center;
+}
+
+.menu{
+    display: inline-block;
+}
+
+@media screen and (max-width: 600px) {
+    .menu ul, .menu ul li {float: none;}
+}
+
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+  
+.menu li {
+    float: left;
+    margin: 10px;
+}
+
+.menu li a {
+    display: block;
+    color: #666666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 1.27em;
+}
+
+.menu li a:hover {
+   color: hsl(198, 54%, 33%);
+}
+
+.paris{
+    text-align:center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.paris img {
+    margin: 50px;
+    max-width: 650px;
+    max-height: 450px;
+    
+}
+
+.france{
+    text-align:center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.france img {
+    margin: 50px;
+    max-width: 450px;
+    max-height: 250px;
+}
+
+.france .who {
+    font-family: Open Sans , 'Source Sans Pro', sans-serif;
+    margin: 50px;
+    text-align: left;
+    font-size: 16px;
+    margin-top: -5%;
+}
+
+.france .who .title{
+    font-size: 30px;
+}
+
+
+
+
+
+
+
+
+.titre {
+    color:black;
+    font:30px Arial, Helvetica, sans-serif;
+    text-align:center;
+}
+
+.texteNiveau2 {
+    font:20px Arial, Helvetica, sans-serif;
+}
+
+.texteAccueil {
+
+    color: #000;
+    font:14px Georgia, "Times New Roman", Times, serif;
+    font-weight:bold;
+    font-style:italic;
+    text-align:left;
+}
+
+td,tr,div,p {
+    font:11px Arial, Helvetica, sans-serif;
+}
+
+table.tabQuadrille td {
+    border-bottom:1px solid #777777;
+    border-right:1px solid #777777;
+    border-left:1px solid #777777;
+    border-top:1px #777777;
+    padding-left:3px;
+} 
+
+tr.enTeteTabQuad {
+    background-image:url('../images/xpBarre.jpg');
+    background-color:#FFFFC0;
+    color:black;
+    height:21px;
+    text-align:center;
+} 
+
+tr.enTete2TabQuad {
+    background-color:#FFFFC0;
+    color:black;
+    text-align:left;
+} 
+
+tr.ligneTabQuad {
+    background-color:#FFFFE0;
+    color:black;
+    text-align:left;
+}
+
+table.tabNonQuadrille {
+    background-color:#FFFFC0;
+    color:black;
+    border-bottom:1px solid #777777;
+    border-right:1px solid #777777;
+    border-left:1px solid #777777;
+    border-top:1px #777777;
+}
+
+tr.enTeteTabNonQuad td {
+    background-image:url('../images/xpBarre.jpg');
+    background-color:#FFFFC0;
+    color:black;
+    height:21px;
+    text-align:center;
+    border-bottom:1px solid #777777;
+} 
+
+tr.ligneTabNonQuad td {
+    background-color:#FFFFE0;
+    color:black;
+    text-align:left;
+    height:28px;
+    padding-left:3px;
+} 
+.msgErreur {
+    color:red;
+    font-size:14px;
+}
+
+.erreur {
+    background-color:white;
+    color:red;
+}
+
+td.absenceOffre {
+    background-color:#EEEEEE;
+    color:black;
+    width:30px;
+    text-align:center;
+}
+
+td.reserveSiLien {
+    background-color:#FFFFFF;
+    color:black;
+    width:30px;
+    text-align:center;
+}
+
+td.reserve {
+    background-color:#FFFF80;
+    color:black;
+    width:30px;
+    text-align:center;
+}
+
+td.libre {
+    background-color:#99FFCC;
+    color:black;
+    width:30px;
+    text-align:center;
+}
