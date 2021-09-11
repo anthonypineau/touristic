@@ -1,72 +1,46 @@
 <?php
-
 /**
- * Contrôleur principal
- * reçoit au moins deux paramètres par l'URL :
- *  "controleur" : classe Controleur à instancier
- *  "action" : méthode à appeler
- * @author prof
- * @version 2019
+ * @author apineau
+ * @version 2021
  */
-use controleur\GestionParametres;
-use controleur\Session;
-use controleur\SessionAuthentifiee;
+use controller\ParametersHandling;
+use controller\Session;
+use controller\AuthentifiedSession;
 //use \Exception;
-use controleur\GestionErreurs;
+use controller\ErrorsHandling;
 
 require_once __DIR__ . "/includes/autoload.inc.php";
 
-Session::demarrer();
+Session::start();
 // lecture des paramètres de l'application
-GestionParametres::initialiser();
-include GestionParametres::racine() . "includes/fonctionsUtilitaires.inc.php";
-include GestionParametres::racine() . "includes/fonctionsDatesTimes.inc.php";
+ParametersHandling::initialize();
+//include GestionParametres::racine() . "includes/fonctionsUtilitaires.inc.php";
+//include GestionParametres::racine() . "includes/fonctionsDatesTimes.inc.php";
+//include "includes/utilFunctions.inc.php";
+//include "includes/dateFunctions.inc.php";
 
-// analyse de l'URL (paramètres GET)
-if (isset($_GET['controleur'])) {
-    $controleur = $_GET['controleur'];
+if (isset($_GET['controller'])) {
+    $controller = $_GET['controller'];
 } else {
-    // le contrôleur par défaut est CtrlAccueil
-    $controleur = 'accueil';
+    $controller = 'home';
 }
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
 } else {
-    // la méthode par défaut est defaut()
-    $action = 'defaut';
+    $action = 'default';
 }
 
-// Contrôle de l'authentification
-// seules la page d'accueil ainsi que la page d'authentification sont accessible hors connexion
-if (!SessionAuthentifiee::estConnecte() && $controleur != 'accueil' && $controleur != 'authentification') {
-    $controleur = 'accueil';
-    $action = 'refuser';
-}else{
-    if(isset($_SESSION["role"])) {
-        if ($_SESSION["role"] == 'Visiteur' && ($action == 'creer' || $action == 'validerCreer' || $action == 'modifier' || $action == 'validerModifier' || $action == 'supprimer' || $action == 'validerSupprimer' || $action == 'valider')) {
-            $controleur = 'accueil';
-            $action = 'refuserRole';
-        }
-
-        if ($_SESSION["role"] == 'Etablissement' && $controleur != 'etablissements' && ($action == 'creer' || $action == 'validerCreer' || $action == 'modifier' || $action == 'validerModifier' || $action == 'supprimer' || $action == 'validerSupprimer' || $action == 'valider')) {
-            $controleur = 'accueil';
-            $action = 'refuserRole';
-        }
-    }
+if (!AuthentifiedSession::isConnected() && $controller != 'home' && $controller != 'authentification') {
+    $controller = 'home';
+    $action = 'refuse';
 }
 
-// Instanciation du contrôleur et appel de sa méthode d'action
 try {
-    // Construction du nom de la classe contrôleur
-    $classeControleur = "controleur\Ctrl" . ucfirst($controleur);
-    // Instanciation d'un obje contrôleur
-    /* @var controleur\ControleurGenerique $ctrl  */
-    $ctrl = new $classeControleur();
-    // Appel de la méthode d'action de ce contrôleur
+    $controllerClass = "controller\\" . ucfirst($controller) . "Controller";
+    $ctrl = new $controllerClass();
     $ctrl->$action();
 } catch (\Exception $e) {
-    // en cas d'erreur (contrôleur ou action inexistante)
-    GestionErreurs::ajouter("Module indisponible :$controleur:- " . $e->getMessage());
+    ErrorsHandling::ajouter("Module indisponible :$controller:- " . $e->getMessage());
     header("Location: index.php");
 }
 
