@@ -91,6 +91,15 @@ body {
     margin: 0 auto;
 }
 
+.form {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.form select{
+    margin-left: 30px;
+}
+
 form {
     position: fixed;
     top: 30%;

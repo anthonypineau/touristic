@@ -42,6 +42,13 @@ use model\work\Region;
                         </ul>
                     </li>
                     <li><a href="index.php?controller=references">Références</a></li>
+                    <?php
+                        if(AuthentifiedSession::isConnected()){
+                    ?>
+                        <li><a href="index.php?controller=region&action=addView">Ajouter une ville</a></li>
+                    <?php
+                        }
+                    ?>
                     <a class="rightButton" href="index.php?controller=authentication<?php echo AuthentifiedSession::isConnected()? "&action=disconnect": "" ?>"><?php echo AuthentifiedSession::isConnected()? "Disconnect": "Connect" ?></a>
                 </ul>
             </div>

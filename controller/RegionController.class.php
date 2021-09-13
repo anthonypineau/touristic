@@ -8,6 +8,7 @@
 namespace controller;
 
 use view\region\RegionView;
+use view\region\AddCityView;
 use model\dao\Bdd;
 use model\dao\RegionDAO;
 use model\work\Region;
@@ -26,5 +27,20 @@ class RegionController extends GenericController {
             parent::nonAuthorizedView();
         }
         $this->view->display();
+    }
+
+    function addView(){
+        $this->view = new AddCityView();
+        $this->view->setTitle("Ajouter une ville");
+        if (AuthentifiedSession::isConnected()) {
+            parent::authorizedView();
+        }else{
+            parent::nonAuthorizedView();
+        }
+        $this->view->display();
+    }
+
+    function add(){
+        
     }
 }
