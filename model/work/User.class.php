@@ -16,7 +16,7 @@ class User {
         $this->password = $password;
     }
     public function __toString() {
-        return get_class($this). "{ id=". $this->id . " - username=". $this->username . " password=". $this->password "}";
+        return get_class($this). "{ id=". $this->id . " - username=". $this->username . " password=". $this->password . "}";
     }
 
     function getId() {

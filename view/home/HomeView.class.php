@@ -1,6 +1,7 @@
 <?php
 namespace view\home;
 use view\GenericView;
+use controller\AuthentifiedSession;
 
 /**
  * @author apineau
