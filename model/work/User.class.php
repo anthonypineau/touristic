@@ -24,11 +24,11 @@ class User {
     }
 
     function getUsername() {
-        return $this->civilite;
+        return $this->username;
     }
 
     function getPassword() {
-        return $this->nom;
+        return $this->password;
     }
 
     function setId($id) {

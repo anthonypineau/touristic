@@ -47,6 +47,19 @@ body {
    color: hsl(198, 54%, 33%);
 }
 
+.dropdown-content{
+    display: none;
+}
+
+.dropdown-content li a{
+    font-size: 12px;
+}
+
+.dropdown:hover .dropdown-content{
+    display: flex;
+    flex-direction: column;
+}
+
 .paris{
     text-align:center;
     justify-content: center;
@@ -86,123 +99,44 @@ body {
     font-size: 30px;
 }
 
+.region ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
 
+.region .name{
+    text-align: center;
+}
 
-
-
-
-
-
-.titre {
-    color:black;
-    font:30px Arial, Helvetica, sans-serif;
+.city{
     text-align:center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
 
-.texteNiveau2 {
-    font:20px Arial, Helvetica, sans-serif;
+.city img {
+    margin: 50px;
+    max-width: 650px;
+    max-height: 450px;
 }
 
-.texteAccueil {
-
-    color: #000;
-    font:14px Georgia, "Times New Roman", Times, serif;
-    font-weight:bold;
-    font-style:italic;
-    text-align:left;
+.city .description {
+    flex-direction: column;
 }
 
-td,tr,div,p {
-    font:11px Arial, Helvetica, sans-serif;
+.cities li:nth-child(even) {
+    flex-direction: row-reverse;
 }
-
-table.tabQuadrille td {
-    border-bottom:1px solid #777777;
-    border-right:1px solid #777777;
-    border-left:1px solid #777777;
-    border-top:1px #777777;
-    padding-left:3px;
-} 
-
-tr.enTeteTabQuad {
-    background-image:url('../images/xpBarre.jpg');
-    background-color:#FFFFC0;
-    color:black;
-    height:21px;
-    text-align:center;
-} 
-
-tr.enTete2TabQuad {
-    background-color:#FFFFC0;
-    color:black;
-    text-align:left;
-} 
-
-tr.ligneTabQuad {
-    background-color:#FFFFE0;
-    color:black;
-    text-align:left;
+/*
+.cities li:nth-child(odd) {
+    background-color: green;
 }
+*/
 
-table.tabNonQuadrille {
-    background-color:#FFFFC0;
-    color:black;
-    border-bottom:1px solid #777777;
-    border-right:1px solid #777777;
-    border-left:1px solid #777777;
-    border-top:1px #777777;
-}
-
-tr.enTeteTabNonQuad td {
-    background-image:url('../images/xpBarre.jpg');
-    background-color:#FFFFC0;
-    color:black;
-    height:21px;
-    text-align:center;
-    border-bottom:1px solid #777777;
-} 
-
-tr.ligneTabNonQuad td {
-    background-color:#FFFFE0;
-    color:black;
-    text-align:left;
-    height:28px;
-    padding-left:3px;
-} 
-.msgErreur {
+.error {
     color:red;
     font-size:14px;
-}
-
-.erreur {
-    background-color:white;
-    color:red;
-}
-
-td.absenceOffre {
-    background-color:#EEEEEE;
-    color:black;
-    width:30px;
-    text-align:center;
-}
-
-td.reserveSiLien {
-    background-color:#FFFFFF;
-    color:black;
-    width:30px;
-    text-align:center;
-}
-
-td.reserve {
-    background-color:#FFFF80;
-    color:black;
-    width:30px;
-    text-align:center;
-}
-
-td.libre {
-    background-color:#99FFCC;
-    color:black;
-    width:30px;
-    text-align:center;
 }

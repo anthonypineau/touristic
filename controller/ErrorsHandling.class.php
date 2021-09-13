@@ -32,7 +32,7 @@ class ErrorsHandling {
     public static function printErrors() : string {
         $return = "";
         if (self::nbErrors() != 0) {
-            $return .= '<div id="error" class="errorMessage">';
+            $return .= '<div class="error">';
             $return .=  '<ul>';
             foreach (self::getErrors() as $error) {
                 $return .=  "<li>$error</li>";

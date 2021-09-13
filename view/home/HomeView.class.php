@@ -3,8 +3,6 @@ namespace view\home;
 use view\GenericView;
 
 /**
- * Description Page d'accueil du site
- *
  * @author apineau
  * @version 2021
  */

@@ -13,7 +13,7 @@ use view\home\HomeViewNonAuthorized;
 class HomeController extends GenericController {
     function default() {
         $this->view = new HomeView();
-        $this->view->setTitle("Festival - accueil");
+        $this->view->setTitle("Touristic");
         if (AuthentifiedSession::isConnected()) {
             parent::authorizedView();
         }else{
@@ -25,7 +25,7 @@ class HomeController extends GenericController {
     
     function refuse() {
         $this->view = new HomeViewNonAuthorized();
-        $this->view->setTitle("Festival - accueil");
+        $this->view->setTitle("Touristic");
         parent::nonAuthorizedView();
         $this->view->display();
     }

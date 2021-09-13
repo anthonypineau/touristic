@@ -4,6 +4,9 @@
  * @version 2021
  */
 use controller\ParametersHandling;
+use model\dao\Bdd;
+use model\dao\RegionDAO;
+use model\work\Region;
 ?>
 <!DOCTYPE html">
 <html lang="fr">
@@ -21,9 +24,20 @@ use controller\ParametersHandling;
             <div class="menu">
                 <ul>
                     <li><a href="index.php?controller=home">Accueil</a></li>
-                    <li><a href="index.php?controller=paca">Région PACA</a></li>
-                    <li><a href="index.php?controller=ra">Région Rhône-Alpes</a></li>
-                    <li><a href="index.php?controller=pdl">Région Pays de la Loire</a></li>
+                    <li class="dropdown">
+                        <a href="#">Region</a>
+                        <ul class="dropdown-content">
+                    <?php
+                        Bdd::connect();
+                        $regions = RegionDAO::getAll();
+                        foreach($regions as $region){
+                        ?>
+                        <li><a href="index.php?controller=region&id=<?php echo strtoupper($region->getId()) ?>">Région <?= $region->getName() ?></a></li>
+                        <?php
+                        }
+                    ?>
+                        </ul>
+                    </li>
                     <li><a href="index.php?controller=references">Références</a></li>
                 </ul>
             </div>
