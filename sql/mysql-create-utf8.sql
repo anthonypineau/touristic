@@ -17,6 +17,8 @@ ENGINE=INNODB;
 create table Regions(
 id char(3) not null,
 name varchar(100) not null,
+description text not null,
+description_en text not null,
 constraint pk_Regions primary key(id))
 ENGINE=INNODB;
 

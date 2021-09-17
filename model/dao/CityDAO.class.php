@@ -20,7 +20,6 @@ class CityDAO {
     }
 
     protected static function workToBdd(City $object, $region, PDOStatement $stmt) {
-        $stmt->bindValue(':id', $object->getId());
         $stmt->bindValue(':name', $object->getName());
         $stmt->bindValue(':source', $object->getSource());
         $stmt->bindValue(':description', $object->getDescription());
@@ -66,10 +65,10 @@ class CityDAO {
         return $object;
     }
     
-    public static function insert(City $object) {
-        $query = "INSERT INTO Cities VALUES (:id, :name, :source, :description, :region)";
+    public static function insert(City $object, $region) {
+        $query = "INSERT INTO Cities (name, source, description, region) VALUES (:name, :source, :description, :region)";
         $stmt = Bdd::getPdo()->prepare($query);
-        self::workToBdd($object, $stmt);
+        self::workToBdd($object, $region, $stmt);
         $ok = $stmt->execute();
         return ($ok && $stmt->rowCount() > 0);
     }

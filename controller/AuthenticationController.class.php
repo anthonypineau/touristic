@@ -56,5 +56,6 @@ class AuthenticationController extends GenericController {
                 ErrorsHandling::add('login ou mot de passe inconnu');
         }
         return $user;
-    }}
+        }
+    }
 }

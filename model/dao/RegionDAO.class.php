@@ -13,14 +13,18 @@ class RegionDAO {
     protected static function bddToWork(array $bdd) {
         $id = $bdd['ID'];
         $name = $bdd['NAME'];
+        $description = $bdd['DESCRIPTION'];
+        $description_en = $bdd['DESCRIPTION_EN'];
         $cities = CityDAO::getAllByRegion($id);
-        $oneRegion = new Region($id, $name, $cities);
+        $oneRegion = new Region($id, $name, $description, $description_en, $cities);
         return $oneRegion;
     }
 
     protected static function workToBdd(Region $object, PDOStatement $stmt) {
         $stmt->bindValue(':id', $object->getId());
         $stmt->bindValue(':name', $object->getName());
+        $stmt->bindValue(':description', $object->getDescription());
+        $stmt->bindValue(':description_en', $object->getDescriptionEn());
     }
 
     public static function getAll() {
@@ -49,7 +53,7 @@ class RegionDAO {
     }
     
     public static function insert(Region $object) {
-        $query = "INSERT INTO Regions VALUES (:id, :name)";
+        $query = "INSERT INTO Regions VALUES (:id, :name, :description, :description_en)";
         $stmt = Bdd::getPdo()->prepare($query);
         self::workToBdd($object, $stmt);
         $ok = $stmt->execute();
@@ -58,7 +62,7 @@ class RegionDAO {
 
     public static function update($id, Region $object) {
         $ok = false;
-        $query = "UPDATE  Regions SET NAME=:name
+        $query = "UPDATE  Regions SET NAME=:name, DESCRIPTION:description, DESCRIPTION_EN:description_en
            WHERE id =:id";
         $stmt = Bdd::getPdo()->prepare($query);
         self::workToBdd($object, $stmt);

@@ -30,12 +30,10 @@ if (isset($_GET['action'])) {
     $action = 'default';
 }
 
-/*
-if (!AuthentifiedSession::isConnected() && $controller != 'home' && $controller != 'authentification') {
+if (!AuthentifiedSession::isConnected() && $controller == 'region' && $action != 'default') {
     $controller = 'home';
     $action = 'refuse';
 }
-*/
 
 try {
     $controllerClass = "controller\\" . ucfirst($controller) . "Controller";
@@ -45,5 +43,3 @@ try {
     ErrorsHandling::add("Module indisponible :$controller:- " . $e->getMessage());
     header("Location: index.php");
 }
-
-

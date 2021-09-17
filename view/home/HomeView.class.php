@@ -20,7 +20,7 @@ class HomeView extends GenericView {
                 <img src="./assets/logo.png" alt="logo">
                 <img src="./assets/home/paris.jpg" alt="Eiffel tower">
             </div>
-            <div class="france">
+            <div style="" class="france">
                 <img src="./assets/home/france.png" alt="France">
                 <div class="who">
                     <p class="title">Qui sommes-nous ?</p>

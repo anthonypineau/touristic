@@ -28,7 +28,7 @@ use model\work\Region;
                 <ul>
                     <li><a href="index.php?controller=home">Accueil</a></li>
                     <li class="dropdown">
-                        <a href="#" onclick="myFunction()" class="dropbutton">Regions <i class="fa fa-caret-down"></i></a>
+                        <a onclick="myFunction()" class="dropbutton">Regions <i class="fa fa-caret-down"></i></a>
                         <ul id="dropdown-content" class="dropdown-content">
                     <?php
                         Bdd::connect();

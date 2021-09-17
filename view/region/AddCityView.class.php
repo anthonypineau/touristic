@@ -30,8 +30,6 @@ class AddCityView extends GenericView {
                 <select name="region" id="region">
                     <?php
                         foreach(RegionDAO::getAll() as $region){
-
-                        
                     ?>
                         <option value="<?= $region->getId() ?>"><?= $region->getName() ?></option>
                     <?php

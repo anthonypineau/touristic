@@ -15,7 +15,7 @@ class HomeViewNonAuthorized extends GenericView {
     }
 
     public function display() {
-        include $this->getHeader();
+        include $this->getHead();
         ?>
         <br>
         <h2>Vous devez vous authentifier</h2>

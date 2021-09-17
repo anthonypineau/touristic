@@ -22,6 +22,14 @@ class RegionView extends GenericView {
                 <h1><?php echo $this->region->getName() ?></h1>
             </div>
             <ul class="cities">
+                <li class="region_description">
+                    <p class="description">
+                        <?= $this->region->getDescription() ?>
+                    </p>
+                    <p class="description_en">
+                        <?= $this->region->getDescriptionEn() ?>
+                    </p>
+                </li>
                 <?php
                     foreach($this->region->getCities() as $city){
                         ?>
