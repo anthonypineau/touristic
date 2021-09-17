@@ -26,6 +26,9 @@ class AddCityView extends GenericView {
                 <label for="description"><b>Description</b></label>
                 <input type="text" placeholder="Enter description" name="description" required>
                 
+                <label for="description_en"><b>Description en anglais</b></label>
+                <input type="text" placeholder="Enter description" name="description_en" required>
+
                 <label for="region"><b>Region</b></label>
                 <select name="region" id="region">
                     <?php

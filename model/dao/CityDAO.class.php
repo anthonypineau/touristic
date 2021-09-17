@@ -15,7 +15,8 @@ class CityDAO {
         $name = $bdd['NAME'];
         $source = $bdd['SOURCE'];
         $description = $bdd['DESCRIPTION'];
-        $oneCity = new City($id, $name, $source, $description);
+        $description_en = $bdd['DESCRIPTION_EN'];
+        $oneCity = new City($id, $name, $source, $description, $description_en);
         return $oneCity;
     }
 
@@ -23,6 +24,7 @@ class CityDAO {
         $stmt->bindValue(':name', $object->getName());
         $stmt->bindValue(':source', $object->getSource());
         $stmt->bindValue(':description', $object->getDescription());
+        $stmt->bindValue(':description_en', $object->getDescriptionEn());
         $stmt->bindValue(':region', $region);
     }
 
@@ -66,7 +68,7 @@ class CityDAO {
     }
     
     public static function insert(City $object, $region) {
-        $query = "INSERT INTO Cities (name, source, description, region) VALUES (:name, :source, :description, :region)";
+        $query = "INSERT INTO Cities (name, source, description, description_en, region) VALUES (:name, :source, :description, :description_en, :region)";
         $stmt = Bdd::getPdo()->prepare($query);
         self::workToBdd($object, $region, $stmt);
         $ok = $stmt->execute();
@@ -76,7 +78,7 @@ class CityDAO {
     public static function update($id, City $object, $region) {
         $ok = false;
         $query = "UPDATE  Cities SET NAME=:name, SOURCE=:source,
-           DESCRIPTION=:description, REGION=:region
+           DESCRIPTION=:description, DESCRIPTION_EN=:description_en REGION=:region
            WHERE id =:id";
         $stmt = Bdd::getPdo()->prepare($query);
         self::workToBdd($object, $stmt);

@@ -46,8 +46,9 @@ class RegionController extends GenericController {
         $name = $_REQUEST['name'];
         $source = $_REQUEST['source'];
         $description = $_REQUEST['description'];
+        $description_en = $_REQUEST['description_en'];
         $region = $_REQUEST['region'];
-        $city = $this->verification($name, $source, $description);
+        $city = $this->verification($name, $source, $description, $description_en);
         if (ErrorsHandling::nbErrors() == 0) {
             CityDAO::insert($city, $region);
             header("Location: index.php");
@@ -58,12 +59,12 @@ class RegionController extends GenericController {
         }
     }
 
-    private function verification($name, $source, $description) {
+    private function verification($name, $source, $description, $description_en) {
         $city = null;
-        if ($name == "" || $source == "" || $description == "") {
+        if ($name == "" || $source == "" || $description == "" || $description_en == "") {
             ErrorsHandling::add('Il faut saisir des attributs valides');
         }else {
-            $city = new City(1, $name, $source, $description);
+            $city = new City(1, $name, $source, $description, $description_en);
         }
         return $city;
     }

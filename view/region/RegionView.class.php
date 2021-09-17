@@ -36,7 +36,10 @@ class RegionView extends GenericView {
                             <li class="city">
                                 <div class="description">
                                     <h2><?php echo $city->getName() ?></h2>
-                                    <p><?php echo $city->getDescription() ?></p>
+                                    <div>
+                                        <p class="description_fr"><?php echo $city->getDescription() ?></p>
+                                        <p class="description_en"><?php echo $city->getDescriptionEn() ?></p>
+                                    </div>
                                 </div>
                                 <img src="<?php echo $city->getSource() ?>" alt="<?php echo $city->getName() ?>">
                             </li>
