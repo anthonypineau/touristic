@@ -13,17 +13,11 @@ abstract class GenericView {
     private $middle;
 
     private $footer;
-
-    private $isLinksActive;
-
-    private $isConnected;
-    
-    private $identiy;
-    
+            
     public function __construct() {
         $this->setTitle('Touristic');
-        $this->setHead(ParametersHandling::root() . 'view/includes/head.inc.php');
-        $this->setFooter(ParametersHandling::root() . 'view/includes/footer.inc.php');
+        $this->setHead('./view/includes/head.inc.php');
+        $this->setFooter('./view/includes/footer.inc.php');
     }
 
     public abstract function display();
@@ -45,18 +39,6 @@ abstract class GenericView {
         return $this->footer;
     }
 
-    function getIsLinksActive(): bool {
-        return $this->isLinksActive;
-    }
-
-    public function getIsConnected() : bool {
-        return $this->isConnected;
-    }
-
-    public function getIdentity() : string {
-        return $this->identity;
-    }
-
     function setTitle(string $title) {
         $this->title = $title;
     }
@@ -71,17 +53,5 @@ abstract class GenericView {
 
     function setFooter(string $footer) {
         $this->footer = $footer;
-    }
-
-    function setIsLinksActive(bool $isLinksActive) {
-        $this->isLinksActive = $isLinksActive;
-    }
-    
-    public function setIsConnected (bool $isConnected) {
-        $this->isConnected = $isConnected;
-    }
-
-    public function setIdentity(string $identity) {
-        $this->identity = $identity;
     }
 }

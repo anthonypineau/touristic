@@ -3,7 +3,7 @@
  * @author apineau
  * @version 2021
  */
-use controller\ParametersHandling;
+
 use controller\Session;
 use controller\AuthentifiedSession;
 //use \Exception;
@@ -12,12 +12,6 @@ use controller\ErrorsHandling;
 require_once __DIR__ . "/includes/autoload.inc.php";
 
 Session::start();
-// lecture des paramètres de l'application
-ParametersHandling::initialize();
-//include GestionParametres::racine() . "includes/fonctionsUtilitaires.inc.php";
-//include GestionParametres::racine() . "includes/fonctionsDatesTimes.inc.php";
-//include "includes/utilFunctions.inc.php";
-//include "includes/dateFunctions.inc.php";
 
 if (isset($_GET['controller'])) {
     $controller = $_GET['controller'];

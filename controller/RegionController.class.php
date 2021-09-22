@@ -22,22 +22,12 @@ class RegionController extends GenericController {
         $region=RegionDAO::getOneById($idRegion);
         $this->view->setRegion($region);
         $this->view->setTitle($region->getName());
-        if (AuthentifiedSession::isConnected()) {
-            parent::authorizedView();
-        }else{
-            parent::nonAuthorizedView();
-        }
         $this->view->display();
     }
 
     function addView(){
         $this->view = new AddCityView();
         $this->view->setTitle("Ajouter une ville");
-        if (AuthentifiedSession::isConnected()) {
-            parent::authorizedView();
-        }else{
-            parent::nonAuthorizedView();
-        }
         $this->view->display();
     }
 

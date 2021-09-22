@@ -17,11 +17,6 @@ class AuthenticationController extends GenericController {
     function default() {
         $this->view = new AuthenticationView();
         $this->view->setTitle("Authentification");
-        if (AuthentifiedSession::isConnected()) {
-            parent::authorizedView();
-        }else{
-            parent::nonAuthorizedView();
-        }
         $this->view->display();
     }
 
@@ -36,7 +31,6 @@ class AuthenticationController extends GenericController {
         } else {
             $this->view = new AuthenticationView();
             $this->view->setTitle("Authentification");
-            parent::nonAuthorizedView();
             $this->view->display();
         }
     }

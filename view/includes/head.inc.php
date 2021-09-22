@@ -3,7 +3,6 @@
  * @author apineau
  * @version 2021
  */
-use controller\ParametersHandling;
 use controller\AuthentifiedSession;
 use model\dao\Bdd;
 use model\dao\RegionDAO;
@@ -13,7 +12,6 @@ use model\work\Region;
 <html lang="fr">
     <head>
         <title><?= $this->getTitle() ?></title>
-        <!-- <base href="<?= ParametersHandling::get('root') ?>" /> -->
         <meta http-equiv="Content-Language" content="fr">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <link href="view/styles/main.css" rel="stylesheet" type="text/css">

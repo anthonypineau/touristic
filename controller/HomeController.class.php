@@ -13,19 +13,12 @@ class HomeController extends GenericController {
     function default() {
         $this->view = new HomeView();
         $this->view->setTitle("DiscoverFrance");
-        if (AuthentifiedSession::isConnected()) {
-            parent::authorizedView();
-        }else{
-            parent::nonAuthorizedView();
-        }
         $this->view->display();
-
     }
     
     function refuse() {
         $this->view = new HomeViewNonAuthorized();
         $this->view->setTitle("DiscoverFrance");
-        parent::nonAuthorizedView();
         $this->view->display();
     }
 }
